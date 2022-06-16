@@ -1,0 +1,67 @@
+* {
+    font-family: Roboto, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+button {
+    margin: 6px;
+}
+
+.button-container {
+    display: inline-flex;
+    width: fit-content;
+    background-color: #eee;
+}
+
+.main-button {
+    background-color: #ddd;
+    border: solid 1px #aaa;
+}
+
+.secondary-button {
+    color: #555;
+    background-color: #ddd;
+    border: solid 1px #aaa;
+}
+
+.vertical {
+    flex-direction: column;
+}
+
+/* flexbox */
+#gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* padding: 1rem; */
+    width: 100%;
+    justify-content: space-evenly;
+    background-color: rgba(170, 170, 170, 0.185);
+}
+.model {
+    width: 70vw;
+    height: 70vw;
+    background-color: #aaa;
+    border-radius: 10px;
+    margin: 1rem;
+    transition: all 0.2s;
+}
+
+.model:hover {
+    background-color: rgb(178, 178, 178);
+}
+
+@media only screen and (min-width: 550px) {
+    .model {
+        width: 30vw;
+        height: 30vw;
+    }
+}
+@media only screen and (min-width: 650px) {
+    .model {
+        width: 20vw;
+        height: 20vw;
+    }
+}
