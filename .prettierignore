@@ -1,0 +1,7 @@
+**/.git
+**/.svn
+**/.hg
+**/node_modules
+**/out-release
+**/out-debug
+**/Gruntfile.js
