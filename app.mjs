@@ -7,9 +7,10 @@ viewer.grid.setGrid();
 viewer.axes.setAxes();
 
 async function loadIfc(url) {
-    await viewer.IFC.setWasmPath("./wasm/web-ifc.wasm");
+    // await viewer.IFC.setWasmPath("./wasm/web-ifc.wasm");
     const model = await viewer.IFC.loadIfcUrl(url);
     viewer.shadowDropper.renderShadow(model.modelID);
 }
 
-loadIfc("./models/culvert.ifc");
+loadIfc("./models/01.ifc");
+// loadIfc("./models/culvert.ifc");
