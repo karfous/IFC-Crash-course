@@ -1,30 +1,15 @@
-import { Scene, BoxGeometry, MeshBasicMaterial, Mesh, PerspectiveCamera, WebGLRenderer } from "three";
+import { Color } from "three";
+import { IfcViewerAPI } from "web-ifc-viewer";
 
-// 1 The scene
-const scene = new Scene();
+const container = document.getElementById("viewer-container");
+const viewer = new IfcViewerAPI({ container, backgroundColor: new Color(0xffffff) });
+viewer.grid.setGrid();
+viewer.axes.setAxes();
 
-// 2 The Object
-const geometry = new BoxGeometry(0.5, 0.5, 0.5);
-const material = new MeshBasicMaterial({ color: "orange" });
-const cubeMesh = new Mesh(geometry, material);
-scene.add(cubeMesh);
+async function loadIfc(url) {
+    await viewer.IFC.setWasmPath("./wasm/web-ifc.wasm");
+    const model = await viewer.IFC.loadIfcUrl(url);
+    viewer.shadowDropper.renderShadow(model.modelID);
+}
 
-// 3 The Camera
-const sizes = {
-    width: 800,
-    height: 600,
-};
-
-const camera = new PerspectiveCamera(75, sizes.width / sizes.height);
-camera.position.z = 3;
-
-scene.add(camera);
-
-const canvas = document.getElementById("three-canvas");
-
-const renderer = new WebGLRenderer({
-    canvas: canvas,
-});
-
-renderer.setSize(sizes.width, sizes.height);
-renderer.render(scene, camera);
+loadIfc("./models/culvert.ifc");
